@@ -26,9 +26,8 @@
   </clr-dg-footer>
 </clr-datagrid>
 
-<in-delete-product-modal
-  *ngIf="delete"
-  [product]="productToBeDeleted"
-  (cancel)="handleCancel()"
+<in-delete-product-modal *ngIf="delete" [product]="productToBeDeleted" (cancel)="handleCancel()"
   (confirm)="confirmDelete()">
 </in-delete-product-modal>
+
+<in-product></in-product>
