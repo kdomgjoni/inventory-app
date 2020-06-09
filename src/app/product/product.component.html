@@ -28,6 +28,7 @@
         <clr-input-container>
           <label for="product-name">Product Name *</label>
           <input clrInput type="text" id="product-name" placeholder="IPhone X..." formControlName="name">
+          <clr-control-error>This Field is Required!</clr-control-error>
         </clr-input-container>
         <!-- Toggle Switch for active -->
         <div class="toggle-switch">
@@ -47,13 +48,22 @@
         </clr-input-container>
         <button class="btn btn-primary" (click)="addFeature()">Add Feature</button>
       </div>
+      <ng-template clrPageButtons>
+        <clr-wizard-button [type]="'cancel'">Cancel</clr-wizard-button>
+        <clr-wizard-button [type]="'previous'">Back</clr-wizard-button>
+        <clr-wizard-button [clrWizardButtonDisabled]="isBasicInvalid" [type]="'next'">Next</clr-wizard-button>
+      </ng-template>
     </clr-wizard-page>
     <clr-wizard-page>
       <ng-template clrPageTitle>Expiration Info</ng-template>
       <clr-input-container formGroupName="expiration">
         <input type="date" clrInput clrDate formControlName="expirationDate">
+        <clr-control-error>{{expirationError}}</clr-control-error>
       </clr-input-container>
-
+      <ng-template clrPageButtons>
+        <clr-wizard-button [clrWizardButtonDisabled]="isExpirationInvalid" (click)="handleFinish()" [type]="'finish'">
+          Finish</clr-wizard-button>
+      </ng-template>
     </clr-wizard-page>
   </clr-wizard>
 </form>

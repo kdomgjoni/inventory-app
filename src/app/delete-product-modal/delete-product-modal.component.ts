@@ -16,6 +16,7 @@ export class DeleteProductModalComponent implements OnInit {
 
   ngOnInit() {
   }
+
   cancelDelete() {
     this.cancel.emit();
   }
