@@ -1,7 +1,8 @@
 import { Component, OnInit, ChangeDetectionStrategy, Input, Output, ViewChild, EventEmitter } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ValidatorFn, AbstractControl, FormArray } from '@angular/forms';
 import { ClrWizard } from '@clr/angular';
-import * as _ from 'lodash';
+// import * as _ from 'lodash';
+import pick from 'lodash-es/pick';
 
 
 @Component({
@@ -123,12 +124,12 @@ export class ProductComponent implements OnInit {
     if (this.product) {
       this.productForm.setValue({
         basic: {
-          ..._.pick(this.product, ['name', 'description',
+          ...pick(this.product, ['name', 'description',
             'active']),
           features: this.product.features || [''],
         },
         expiration: {
-          ..._.pick(this.product, ['expirationDate']),
+          ...pick(this.product, ['expirationDate']),
         }
       });
       this.deviceType = this.product.type;
